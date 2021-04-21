@@ -1,0 +1,14 @@
+<h1>Welcome to Coder Cafe!</h1>
+
+<table>
+  <tr>
+    <th>Item</th>
+    <th>Price</th>
+  </tr>
+  <% @menu.each do |item, cost| %>
+    <tr>
+      <td><%= item %></td>
+      <td><%= "#{@currency_symbol} %.2f" % cost %></td>
+    </tr>
+  <% end %>
+</table>
