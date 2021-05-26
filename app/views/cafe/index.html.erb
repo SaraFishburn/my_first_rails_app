@@ -1,14 +1,22 @@
 <h1>Welcome to Coder Cafe!</h1>
 
+<p><%= link_to 'New menu Item', menu_items_path %></p>
+
 <table>
   <tr>
     <th>Item</th>
     <th>Price</th>
+    <th>Actions</th>
   </tr>
-  <% @menu.each do |item, cost| %>
+  <% @menu.each do |item| %>
     <tr>
-      <td><%= item %></td>
-      <td><%= "#{@currency_symbol} %.2f" % cost %></td>
+      <td><%= link_to item.name.to_s.capitalize, item %></td>
+      <td><%= "#{@currency_symbol}%.2f " % item.price %></td>
+      <td>
+        <%= link_to "Edit", edit_menu_item_path(item) %>
+        |
+        <%= link_to "Delete", item, method: :delete, data: { confirm: "Are you sure?"}  %>
+      </td>
     </tr>
   <% end %>
 </table>
